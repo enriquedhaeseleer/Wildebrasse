@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brouwerij Wildebrasse - Kleinschalig, ambachtelijk brouwen van Belgische bieren. Ontdek Het Zwarte Gat en Blonde Wildebrasse.">
+    <meta name="keywords" content="Wildebrasse, brouwerij, Belgisch bier, ambachtelijk, Het Zwarte Gat, Blonde Wildebrasse, craft beer">
+    <meta name="author" content="Brouwerij Wildebrasse">
+    
+    <!-- GDPR & Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <title>Wildebrasse - Ambachtelijke Belgische Brouwerij</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="./css/main.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" as="style">
+    
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Brouwerij Wildebrasse",
+        "description": "Betere bieren",
+        "url": "https://wildebrasse.be",
+        "telephone": "+32495241624",
+        "email": "info@wildebrasse.be"
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main-content" class="skip-link" aria-label="Ga naar hoofdinhoud">Ga naar hoofdinhoud</a>
+    
+    <header class="main-header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Hoofdnavigatie">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="./" aria-label="Wildebrasse homepage">
+                        <img src="assets/brouwerijlogo.jpg" alt="Wildebrasse brouwerij logo" loading="eager">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" 
+                        aria-controls="main-navigation" 
+                        aria-expanded="false" 
+                        aria-label="Menu openen/sluiten">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul id="main-navigation" class="nav-menu" role="menubar">
+                    <li role="none"><a href="./" role="menuitem" aria-current="page">HOME</a></li>
+                    <li role="none"><a href="./over-ons/" role="menuitem">OVER ONS</a></li>
+                    <li class="dropdown" role="none">
+                        <a href="./onze-bieren/" 
+                           role="menuitem" 
+                           aria-haspopup="true" 
+                           aria-expanded="false"
+                           class="dropdown-toggle">ONZE BIEREN</a>
+                        <ul class="dropdown-menu" role="menu" aria-label="Onze bieren submenu">
+                            <li role="none"><a href="./het-zwarte-gat/" role="menuitem">Het Zwarte Gat</a></li>
+                            <li role="none"><a href="./blonde-wildebrasse/" role="menuitem">Blonde Wildebrasse</a></li>
+                        </ul>
+                    </li>
+                    <li role="none"><a href="./verkooppunten/" role="menuitem">VERKOOPPUNTEN</a></li>
+                    <li role="none"><a href="./bestellen/" role="menuitem">BIER BESTELLEN</a></li>
+                    <li role="none"><a href="./contact/" role="menuitem">CONTACT</a></li>
+                    <li role="none"><a href="./links/" role="menuitem">LINKS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title">Wildebrasse</h1>
+                <p class="hero-subtitle">Betere bieren</p>
+                <a href="./onze-bieren/" class="cta-button" aria-describedby="cta-description">
+                    Ontdek Onze Bieren
+                </a>
+                <span id="cta-description" class="sr-only">Bekijk onze selectie van ambachtelijke bieren</span>
+            </div>
+            <div class="hero-image" role="img" aria-label="Wildebrasse bieren collectie">
+                <img src="assets/beidebieren.jpg" alt="Wildebrasse bieren collectie" loading="eager">
+            </div>
+            <div class="scroll-indicator" aria-label="Scroll naar beneden voor meer inhoud">
+                <span>Scroll</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="about-title">
+            <div class="container">
+                <div class="about-content">
+                    <h2 id="about-title">Onze signatuur</h2>
+                    <p>Brouwerij Wildebrasse is opgericht door enkele vrienden met eenzelfde passie voor 'betere bieren'. En dat niet alleen aan de toog, maar evenzeer aan de brouwketel.</p>
+                    
+                    <p>We b(r)ouwen mee aan onze Belgische biercultuur om deze te vernieuwen, te versterken en te promoten. We gaan voor kleinschalig, ambachtelijk brouwen, ietwat tegen de stroom in. Puur en ongetemd!</p>
+                    
+                    <p>Het is onze droom om ooit een eigen kleine brouwerij op te starten.</p>
+                    
+                    <p>We ontwikkelen onze bieren in de eigen nano-proefbrouwerij. Eens het recept op punt, gaan we "in het groot" brouwen bij bevriende brouwers, brouwsels van meestal 1000-1200 liter.</p>
+                    
+                    <p>We hebben momenteel twee bieren: "Het Zwarte Gat", een donkere tripel en "Blonde Wildebrasse", een verfrissende en subtiele blonde.</p>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="./over-ons/" class="cta-button">Lees Ons Verhaal</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="beers-section" aria-labelledby="beers-title">
+            <div class="container">
+                <h2 id="beers-title">Onze Bieren</h2>
+                <p class="intro-text">Ontdek onze twee zorgvuldig gebrouwen bieren, elk met hun eigen unieke karakter.</p>
+                
+                <div class="beers-grid">
+                    <article class="beer-card">
+                        <div class="beer-image" role="img" aria-label="Afbeelding van Het Zwarte Gat fles">
+                            <img src="assets/zwarte-gat.jpg" alt="Het Zwarte Gat donkere tripel fles" loading="lazy">
+                        </div>
+                        <h3><a href="./het-zwarte-gat/">Het Zwarte Gat</a></h3>
+                        <p class="beer-type">Donkere Tripel</p>
+                        <p class="beer-description">Een rijke en complexe donkere tripel met diepe smaken en een warme afdronk. Perfect voor koelere avonden en speciale gelegenheden.</p>
+                        <a href="./het-zwarte-gat/" class="beer-link" aria-label="Meer informatie over Het Zwarte Gat">Meer info</a>
+                    </article>
+                    
+                    <article class="beer-card">
+                        <div class="beer-image" role="img" aria-label="Afbeelding van Blonde Wildebrasse fles">
+                            <img src="assets/bottleBlondeWildebrasse.jpg" alt="Blonde Wildebrasse blonde bier fles" loading="lazy">
+                        </div>
+                        <h3><a href="./blonde-wildebrasse/">Blonde Wildebrasse</a></h3>
+                        <p class="beer-type">Verfrissende Blonde</p>
+                        <p class="beer-description">Een verfrissende en subtiele blonde met een perfecte balans tussen hop en mout. Ideaal voor elke gelegenheid.</p>
+                        <a href="./blonde-wildebrasse/" class="beer-link" aria-label="Meer informatie over Blonde Wildebrasse">Meer info</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contact</h3>
+                    <address>
+                        <p><strong>Email:</strong> <a href="mailto:info@wildebrasse.be" aria-label="Email naar Wildebrasse">info@wildebrasse.be</a></p>
+                        <p><strong>Tel.:</strong> <a href="tel:+32495241624" aria-label="Bel Koen">+32 495/24 16 24</a> (Koen)</p>
+                        <p><strong>Facebook:</strong> <a href="https://facebook.com/wildebrasse" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Facebook pagina (opent in nieuw venster)">@wildebrasse</a></p>
+                    </address>
+                    <img src="./assets/footerhop.jpg" alt="Wildebrasse brouwerij logo" class="footer-logo" loading="lazy">
+                </div>
+                
+                <nav class="footer-nav" aria-label="Footer navigatie">
+                    <h3>Navigatie</h3>
+                    <ul>
+                        <li><a href="./">Home</a></li>
+                        <li><a href="./over-ons/">Over ons</a></li>
+                        <li><a href="./onze-bieren/">Onze bieren</a></li>
+                        <li><a href="./verkooppunten/">Verkooppunten</a></li>
+                        <li><a href="./contact/">Contact</a></li>
+                        <li><a href="./links/">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Brouwerij Wildebrasse. Alle rechten voorbehouden.</p>
+                <p>Deze website is een demo en bedoeld om het design te tonen. Er worden geen gegevens verzameld of commerciële activiteiten uitgevoerd.</p>
+                <p>
+                    <a href="privacy.html">Privacybeleid</a> | 
+                    <a href="algemene-voorwaarden.html">Algemene Voorwaarden</a> |
+                    <a href="cookies.html">Cookiebeleid</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie consent banner (GDPR compliance) -->
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+        <div class="cookie-content">
+            <h3 id="cookie-title">Cookies</h3>
+            <p id="cookie-description">
+                Deze website gebruikt cookies om uw ervaring te verbeteren. 
+                Door verder te gaan, gaat u akkoord met ons <a href="cookies.html">cookiebeleid</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary">Accepteren</button>
+                <button id="decline-cookies" class="btn btn-secondary">Weigeren</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
