@@ -2,22 +2,51 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile navigation toggle
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const body = document.body;
     
     if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function() {
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             this.setAttribute('aria-expanded', !isExpanded);
             navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (!isExpanded) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking on menu items
+        const menuLinks = navMenu.querySelectorAll('a:not(.dropdown-toggle)');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            });
         });
     }
     
-    // Dropdown keyboard navigation
+    // Dropdown functionality for mobile
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const toggle = dropdown.querySelector('.dropdown-toggle');
         const menu = dropdown.querySelector('.dropdown-menu');
         
         if (toggle && menu) {
+            toggle.addEventListener('click', function(e) {
+                // Only handle click on mobile/tablet (when hamburger is visible)
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                }
+            });
+            
             toggle.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -99,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     mobileToggle.setAttribute('aria-expanded', 'false');
                     mobileToggle.focus();
                 }
+                body.style.overflow = '';
             }
         }
     });
@@ -111,6 +141,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (mobileToggle) {
                     mobileToggle.setAttribute('aria-expanded', 'false');
                 }
+                body.style.overflow = '';
+            }
+        }
+    });
+    
+    // Handle window resize - close mobile menu and reset body overflow
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 1024) {
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                if (mobileToggle) {
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                }
+                body.style.overflow = '';
             }
         }
     });

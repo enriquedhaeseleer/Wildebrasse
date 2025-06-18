@@ -16,6 +16,7 @@
     --color-border: #e0e0e0;
     --color-header-bg: #ffffff;
     --color-section-alt: #fcfcfc;
+    --color-warm-gray: #f5f5f5;
     
     /* Typography */
     --font-heading: 'Merriweather', serif;
@@ -31,7 +32,7 @@
     --spacing-xl: 6rem;
     --spacing-xxl: 8rem;
     
-    /* Breakpoints */
+    /* Breakpoints - Mobile first */
     --bp-sm: 576px;
     --bp-md: 768px;
     --bp-lg: 992px;
@@ -183,19 +184,7 @@ a:focus {
     border-bottom-color: var(--color-secondary);
 }
 
-/* ===== LAYOUT UTILITIES ===== */
-.container {
-    width: 100%;
-    max-width: var(--bp-xl);
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-}
-
-main {
-    flex: 1;
-}
-
-/* ===== HEADER & NAVIGATION ===== */
+/* ===== HEADER & NAVIGATION - MOBILE FIRST ===== */
 .main-header {
     background: var(--color-header-bg);
     position: sticky;
@@ -217,6 +206,7 @@ main {
     max-width: var(--bp-xl);
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    position: relative;
 }
 
 /* Logo styling - proper sizing */
@@ -224,105 +214,18 @@ main {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    z-index: 1001;
 }
 
 .nav-logo img {
-    height: 80px;
-    margin-right: var(--spacing-sm);
+    height: 60px;
     width: auto;
-    max-width: 150px;
+    max-width: 120px;
     transition: opacity var(--transition-normal);
     object-fit: contain;
 }
 
-/* Fallback text logo styling */
-.nav-logo h1 a {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    transition: color var(--transition-normal);
-    border: none;
-}
-
-.nav-logo h1 a:hover {
-    color: var(--color-secondary);
-}
-
-/* Navigation menu */
-.nav-menu {
-    position: fixed;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--color-white);
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-lg);
-    transform: translateY(-100vh);
-    transition: transform var(--transition-normal);
-    z-index: 999;
-    box-shadow: var(--shadow-lg);
-}
-
-.nav-menu.active {
-    transform: translateY(0);
-}
-
-.nav-menu a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
-    padding: var(--spacing-sm);
-    display: block;
-    border-radius: 4px;
-    transition: all var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    border: none;
-}
-
-.nav-menu a:hover,
-.nav-menu a:focus {
-    background: var(--color-warm-gray);
-    color: var(--color-secondary);
-}
-
-.nav-menu a[aria-current="page"] {
-    background: var(--color-warm-gray);
-    color: var(--color-secondary);
-    font-weight: 600;
-}
-
-/* Mobile dropdown */
-.dropdown-menu {
-    position: static;
-    background: var(--color-warm-gray);
-    list-style: none;
-    margin-top: var(--spacing-xs);
-    border-radius: 4px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition-normal);
-    padding: 0;
-}
-
-.dropdown.active .dropdown-menu {
-    max-height: 200px;
-    padding: var(--spacing-xs) 0;
-}
-
-.dropdown-menu a {
-    padding: var(--spacing-xs) var(--spacing-lg);
-    font-size: 0.8rem;
-    text-transform: none;
-    letter-spacing: normal;
-}
-
-/* Mobile menu toggle */
+/* Mobile menu toggle - always visible on mobile/tablet */
 .mobile-menu-toggle {
     display: flex;
     flex-direction: column;
@@ -330,6 +233,8 @@ main {
     border: none;
     cursor: pointer;
     padding: var(--spacing-xs);
+    z-index: 1001;
+    position: relative;
 }
 
 .hamburger-line {
@@ -353,10 +258,119 @@ main {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Desktop navigation */
-@media (min-width: 768px) {
+/* Mobile navigation menu */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-white);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 100px var(--spacing-md) var(--spacing-lg);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+}
+
+.nav-menu.active {
+    transform: translateX(0);
+}
+
+.nav-menu li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.nav-menu a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--spacing-sm);
+    display: block;
+    border-radius: 4px;
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    border: none;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+    background: var(--color-warm-gray);
+    color: var(--color-secondary);
+}
+
+.nav-menu a[aria-current="page"] {
+    background: var(--color-warm-gray);
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+
+/* Mobile dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: static;
+    background: var(--color-warm-gray);
+    list-style: none;
+    margin-top: var(--spacing-xs);
+    border-radius: 4px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal);
+    padding: 0;
+}
+
+.dropdown.active .dropdown-menu {
+    max-height: 200px;
+    padding: var(--spacing-xs) 0;
+}
+
+.dropdown-menu a {
+    padding: var(--spacing-xs) var(--spacing-lg);
+    font-size: 0.9rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Tablet navigation (iPad and similar) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-logo img {
+        height: 70px;
+        max-width: 140px;
+    }
+    
+    .nav-menu {
+        padding: 120px var(--spacing-xl) var(--spacing-xl);
+    }
+    
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: var(--spacing-md);
+    }
+    
+    .dropdown-menu a {
+        font-size: 1rem;
+        padding: var(--spacing-sm) var(--spacing-xl);
+    }
+}
+
+/* Desktop navigation - hide hamburger, show horizontal menu */
+@media (min-width: 1025px) {
     .mobile-menu-toggle {
         display: none !important;
+    }
+    
+    .nav-logo img {
+        height: 80px;
+        max-width: 150px;
     }
     
     .nav-menu {
@@ -366,18 +380,20 @@ main {
         padding: 0 !important;
         background: transparent !important;
         width: auto !important;
+        height: auto !important;
         gap: var(--spacing-lg) !important;
         box-shadow: none !important;
+        overflow: visible !important;
+    }
+    
+    .nav-menu li {
+        margin-bottom: 0 !important;
     }
     
     .nav-menu a {
         padding: var(--spacing-xs) var(--spacing-sm) !important;
         font-size: 0.85rem !important;
         background: transparent !important;
-    }
-    
-    .dropdown {
-        position: relative;
     }
     
     .dropdown-menu {
@@ -655,6 +671,7 @@ main {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 var(--spacing-md);
 }
 
 .about-content h2 {
@@ -721,6 +738,7 @@ main {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 var(--spacing-md);
 }
 
 .team-member {
@@ -800,6 +818,7 @@ main {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 var(--spacing-md);
 }
 
 .beer-card {
@@ -1223,6 +1242,7 @@ article {
     max-width: 800px;
     margin: 0 auto;
     min-height: 90vh;
+    padding: 0 var(--spacing-md);
 }
 
 .beer-image-large {
@@ -1544,6 +1564,7 @@ article {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
     margin: var(--spacing-xl) 0;
+    padding: 0 var(--spacing-md);
 }
 
 .verkooppunt-category h2 {
@@ -1659,6 +1680,7 @@ article {
 .bestellen-content {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .bestellen-info h2 {
@@ -1778,6 +1800,7 @@ article {
 .links-content {
     max-width: 600px;
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .link-images {
@@ -1813,7 +1836,85 @@ article {
     }
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== RESPONSIVE DESIGN - MOBILE FIRST ===== */
+
+/* Base styles are mobile-first */
+
+/* Small phones */
+@media (max-width: 374px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .nav-container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .nav-logo img {
+        height: 50px;
+        max-width: 100px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Add padding for mobile content */
+    .about-section,
+    .contact-section,
+    .verkooppunten-section,
+    .bestellen-section,
+    .links-section,
+    .beers-section,
+    .about-page,
+    .beer-detail {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+    
+    .team-member,
+    .contact-card,
+    .verkooppunt,
+    .order-method,
+    .beer-card {
+        margin-left: var(--spacing-xs);
+        margin-right: var(--spacing-xs);
+    }
+}
+
+/* Phones landscape and small tablets */
+@media (min-width: 576px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .nav-container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .beer-card {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Better mobile spacing */
+    .about-section,
+    .contact-section,
+    .verkooppunten-section,
+    .bestellen-section,
+    .links-section,
+    .beers-section,
+    .about-page,
+    .beer-detail {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+}
+
+/* Tablets */
 @media (min-width: 768px) {
     .container {
         padding: 0 var(--spacing-lg);
@@ -1837,9 +1938,11 @@ article {
         height: 400px;
     }
     
-    .process-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .beers-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-lg);
+        max-width: 800px;
+        margin: var(--spacing-lg) auto 0 auto;
     }
     
     .footer-content {
@@ -1916,5 +2019,87 @@ article {
     
     .order-button {
         text-align: center;
+    }
+    
+    .contact-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .contact-reasons {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .contact-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .verkooppunt-category {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+        align-items: start;
+    }
+    
+    .verkooppunt-category h2 {
+        grid-column: 1 / -1;
+    }
+    
+    .bestellen-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .links-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .link-images img {
+        max-width: 400px;
+    }
+    
+    .brewing-info ul {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+        max-width: 700px;
+    }
+}
+
+/* Desktop and larger */
+@media (min-width: 1025px) {
+    .hero-content {
+        padding: 0;
+    }
+    
+    .about-content {
+        padding: 0;
+    }
+    
+    .team-grid {
+        padding: 0;
+    }
+    
+    .beers-grid {
+        padding: 0;
+    }
+    
+    .beer-detail-content {
+        padding: 0;
+    }
+    
+    .verkooppunten-grid {
+        padding: 0;
+    }
+    
+    .bestellen-content {
+        padding: 0;
+    }
+    
+    .links-content {
+        padding: 0;
     }
 }
